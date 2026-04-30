@@ -1,0 +1,259 @@
+import React, { useState } from 'react';
+import { Film, Award, Heart, Video, Mail, PlayCircle, Youtube, Instagram, ExternalLink, ChevronDown } from 'lucide-react';
+
+export default function App() {
+  const [activeSection, setActiveSection] = useState('home');
+
+  const scrollTo = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-zinc-950 text-zinc-100 font-sans selection:bg-emerald-600 selection:text-white">
+      {/* Navigation */}
+      <nav className="fixed top-0 w-full z-50 bg-zinc-950/80 backdrop-blur-md border-b border-zinc-800">
+        <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+          <div className="text-xl font-bold tracking-tighter flex items-center gap-2">
+            <Film className="w-6 h-6 text-emerald-500" />
+            <span>Shrivatsa Tadikonda</span>
+          </div>
+          <div className="hidden md:flex gap-8 text-sm font-medium text-zinc-400">
+            <button onClick={() => scrollTo('work')} className="hover:text-white transition-colors">Work</button>
+            <button onClick={() => scrollTo('experience')} className="hover:text-white transition-colors">Experience</button>
+            <button onClick={() => scrollTo('awards')} className="hover:text-white transition-colors">Awards</button>
+            <button onClick={() => scrollTo('contact')} className="hover:text-white transition-colors">Contact</button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section id="home" className="pt-32 pb-20 px-6 min-h-screen flex flex-col justify-center relative overflow-hidden">
+        {/* Abstract background gradient */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-emerald-900/20 blur-[120px] rounded-full pointer-events-none" />
+        
+        <div className="max-w-6xl mx-auto w-full relative z-10 flex flex-col-reverse md:flex-row items-center gap-12 text-center md:text-left">
+          <div className="flex-1">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-6 leading-tight">
+              Capturing stories <br className="hidden lg:block" />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-500">
+                that matter.
+              </span>
+            </h1>
+            <p className="text-xl md:text-2xl text-zinc-400 max-w-2xl mx-auto md:mx-0 mb-10 leading-relaxed">
+              Filmmaker, Content Creator, and Visual Storyteller. Award-winning student director with a passion for non-profit volunteering, educational content, and narrative filmmaking.
+            </p>
+            <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+              <button onClick={() => scrollTo('contact')} className="px-8 py-4 bg-white text-black font-bold rounded-full hover:bg-zinc-200 transition-colors">
+                Get in Touch
+              </button>
+              <button onClick={() => scrollTo('work')} className="px-8 py-4 bg-zinc-900 text-white font-bold rounded-full hover:bg-zinc-800 border border-zinc-800 transition-colors">
+                View My Work
+              </button>
+            </div>
+          </div>
+          
+          <div className="w-56 h-56 md:w-80 md:h-80 lg:w-96 lg:h-96 shrink-0 relative mb-8 md:mb-0">
+             <div className="absolute inset-0 bg-emerald-500 rounded-full blur-[80px] opacity-30"></div>
+             <img 
+               src="image_d7a035.jpg" 
+               alt="Shrivatsa Tadikonda" 
+               className="relative w-full h-full object-cover rounded-full border-4 border-zinc-800/50 shadow-2xl z-10"
+             />
+          </div>
+        </div>
+        
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-zinc-500">
+          <ChevronDown className="w-8 h-8" />
+        </div>
+      </section>
+
+      {/* Content Creation & Channels Section */}
+      <section id="work" className="py-24 px-6 bg-zinc-900/30">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex items-center gap-4 mb-16">
+            <Video className="w-8 h-8 text-emerald-500" />
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight">Channels & Media</h2>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* YouTube Channel 1 */}
+            <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 group hover:border-emerald-500/50 transition-colors flex flex-col">
+              <Youtube className="w-10 h-10 text-emerald-500 mb-6" />
+              <h3 className="text-xl font-bold mb-3">Shrivatsa Tadikonda</h3>
+              <p className="text-zinc-400 mb-6 line-clamp-3">
+                My primary YouTube channel showcasing my personal filmmaking projects, narrative shorts, and creative video work.
+              </p>
+              <div className="mt-auto">
+                <a href="https://www.youtube.com/@shrivatsatadikonda" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-400 hover:text-emerald-300">
+                  Watch Videos <ExternalLink className="w-4 h-4" />
+                </a>
+              </div>
+            </div>
+
+            {/* YouTube Channel 2 */}
+            <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 group hover:border-emerald-500/50 transition-colors flex flex-col">
+              <Youtube className="w-10 h-10 text-emerald-500 mb-6" />
+              <h3 className="text-xl font-bold mb-3">Enlightenment Learning</h3>
+              <p className="text-zinc-400 mb-6">
+                An educational channel where I teach physics concepts and make learning engaging and accessible.
+              </p>
+              <div className="mt-auto mb-6 aspect-video rounded-xl overflow-hidden border border-zinc-800">
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/p7NKzu3VsI0" title="Enlightenment Learning Video" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+              </div>
+              <div>
+                <a href="https://www.youtube.com/@EnlightenmentLearning" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-400 hover:text-emerald-300">
+                  Visit Channel <ExternalLink className="w-4 h-4" />
+                </a>
+              </div>
+            </div>
+
+            {/* Grove Media */}
+            <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 group hover:border-emerald-500/50 transition-colors flex flex-col">
+              <Video className="w-10 h-10 text-emerald-500 mb-6" />
+              <h3 className="text-xl font-bold mb-3">Grove Media</h3>
+              <p className="text-zinc-400 mb-6 line-clamp-3">
+                I'm part of the cinematic team at Walnut Grove High School, creating high-quality media content for the school community.
+              </p>
+              <div className="mt-auto">
+                <a href="https://www.youtube.com/watch?v=-R9v-WJRe3w" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-400 hover:text-emerald-300">
+                  Watch Latest <ExternalLink className="w-4 h-4" />
+                </a>
+              </div>
+            </div>
+
+            {/* Social Media */}
+            <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 group hover:border-emerald-500/50 transition-colors flex flex-col">
+              <Instagram className="w-10 h-10 text-emerald-500 mb-6" />
+              <h3 className="text-xl font-bold mb-3">@actuallyshri</h3>
+              <p className="text-zinc-400 mb-6 line-clamp-3">
+                My personal Instagram where I share updates, photography, behind-the-scenes content, and my latest media projects.
+              </p>
+              <div className="mt-auto">
+                <a href="https://www.instagram.com/actuallyshri/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-400 hover:text-emerald-300">
+                  View Profile <ExternalLink className="w-4 h-4" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Experience (Non-Profits & Volunteering) */}
+      <section id="experience" className="py-24 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex items-center gap-4 mb-16">
+            <Heart className="w-8 h-8 text-emerald-500" />
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight">Non-Profits & Volunteering</h2>
+          </div>
+
+          <div className="space-y-8">
+            {/* Aadhyathe non-profit */}
+            <div className="flex flex-col md:flex-row gap-6 p-8 rounded-3xl border border-zinc-800 bg-zinc-900/50 hover:bg-zinc-900 transition-colors">
+              <div className="md:w-1/3">
+                <div className="text-sm font-bold text-emerald-500 mb-2">2026 - Present</div>
+                <h3 className="text-2xl font-bold">Bhaarathi Vidyalayam</h3>
+                <div className="text-zinc-400 font-medium mt-1">Social Media Lead</div>
+              </div>
+              <div className="md:w-2/3 text-zinc-300 leading-relaxed">
+                <p className="mb-6">
+                  I lead social media and media production efforts for this free Telugu school, which is dedicated to promoting and preserving language and culture. My responsibilities include videographing school programs, managing the organization's Instagram and YouTube presence, and designing custom postcards for cultural festivals.
+                </p>
+                <div className="aspect-video rounded-xl overflow-hidden border border-zinc-800">
+                  <iframe width="100%" height="100%" src="https://www.youtube.com/embed/-R9v-WJRe3w" title="Bhaarathi Vidyalayam Video" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                </div>
+              </div>
+            </div>
+
+            {/* Randamathe volunteer work */}
+            <div className="flex flex-col md:flex-row gap-6 p-8 rounded-3xl border border-zinc-800 bg-zinc-900/50 hover:bg-zinc-900 transition-colors">
+              <div className="md:w-1/3">
+                <div className="text-sm font-bold text-emerald-500 mb-2">2024 - Present</div>
+                <h3 className="text-2xl font-bold">Walnut Grove High School Arena</h3>
+                <div className="text-zinc-400 font-medium mt-1">Live Broadcaster & Videographer</div>
+              </div>
+              <div className="md:w-2/3 text-zinc-300 leading-relaxed">
+                <p>
+                  I volunteer to help film and broadcast live events, including pep rallies and school gatherings, directly from our school arena. This role involves operating camera equipment in a fast-paced live environment and ensuring high-quality event coverage for the student body and community.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Awards Section */}
+      <section id="awards" className="py-24 px-6 bg-zinc-900/30 border-t border-b border-zinc-800">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex items-center gap-4 mb-16">
+            <Award className="w-8 h-8 text-yellow-500" />
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight">School Awards & Honors</h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* Award 1 */}
+            <div className="p-6 rounded-2xl bg-zinc-950 border border-zinc-800 flex items-start gap-4">
+              <div className="p-3 rounded-full bg-yellow-500/10 text-yellow-500 mt-1">
+                <Award className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold mb-2">STN Challenge</h3>
+                <p className="text-zinc-400 text-sm">
+                  Student Television Network • 2024 & 2025
+                </p>
+                <p className="text-zinc-300 mt-3 text-sm leading-relaxed">
+                  Won 1st Place for the narrative film "The Ripple Effect" in 2025. Previously earned an Honorable Mention for a Sugar Awareness PSA in 2024.
+                </p>
+              </div>
+            </div>
+
+            {/* Award 2 */}
+            <div className="p-6 rounded-2xl bg-zinc-950 border border-zinc-800 flex items-start gap-4">
+              <div className="p-3 rounded-full bg-yellow-500/10 text-yellow-500 mt-1">
+                <Award className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold mb-2">AAHSFF & UIL 5A</h3>
+                <p className="text-zinc-400 text-sm">
+                  Film Festival & District Competitions
+                </p>
+                <p className="text-zinc-300 mt-3 text-sm leading-relaxed">
+                  Nominated at the All American High School Film Festival (AAHSFF) for a collaborative group project. This same film also secured 3rd place overall in the UIL 5A District competition.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer / Contact */}
+      <section id="contact" className="py-24 px-6 text-center">
+        <div className="max-w-3xl mx-auto">
+          <Film className="w-12 h-12 text-zinc-800 mx-auto mb-8" />
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">Let's create something together.</h2>
+          <p className="text-xl text-zinc-400 mb-10">
+            Currently open for new collaborations, non-profit projects, and freelance work.
+          </p>
+          <a 
+            href="mailto:shrivatsa.tadikonda.137@gmail.com" 
+            className="inline-flex items-center gap-3 px-8 py-4 bg-white text-black font-bold rounded-full hover:bg-zinc-200 transition-colors text-lg"
+          >
+            <Mail className="w-5 h-5" />
+            shrivatsa.tadikonda.137@gmail.com
+          </a>
+          
+          <div className="flex justify-center gap-6 mt-16 text-zinc-500">
+            <a href="https://www.youtube.com/@shrivatsatadikonda" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors"><Youtube className="w-6 h-6" /></a>
+            <a href="https://www.instagram.com/actuallyshri/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors"><Instagram className="w-6 h-6" /></a>
+            <a href="https://www.youtube.com/@EnlightenmentLearning" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors"><Youtube className="w-6 h-6" /></a>
+          </div>
+          <p className="mt-8 text-sm text-zinc-600">
+            © {new Date().getFullYear()} Shrivatsa Tadikonda. All rights reserved.
+          </p>
+        </div>
+      </section>
+    </div>
+  );
+}
